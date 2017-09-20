@@ -1,0 +1,16 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ----------------------------------------
+    # Ensure Arp-Scan is present on the system
+    # ----------------------------------------
+    - name: Arp-Scan is installed
+      apt:
+        pkg: arp-scan
+        state: installed
+      become: True
+      become_method: sudo
+

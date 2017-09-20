@@ -1,0 +1,21 @@
+
+# ----------------------------------------------------------------------------
+# .retry files are generated when Ansible fails. Because these are from failed
+# attempts to run, presumably the bugs are corrected and the yml files are not
+# left in a broken state. Because they do not get cleaned up automatically,
+# we should ignore them.
+# ----------------------------------------------------------------------------
+*.retry
+
+# ---------------------------------------------------------------------------
+# .aux, .log, .synctex.gz, and .toc files are generated as intermediate steps
+# during Latex compilation into a PDF document. Since the .tex files and the
+# .pdf files are the only ones we'd actually be interested in, we'll ignore
+# the others.
+# ---------------------------------------------------------------------------
+*.aux
+*.log
+*.synctex.gz
+*.toc
+
+

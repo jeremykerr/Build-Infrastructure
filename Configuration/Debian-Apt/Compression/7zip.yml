@@ -1,0 +1,22 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ------------------------------------
+    # Ensure 7zip is present on the system
+    # ------------------------------------
+    - name: 7zip (p7zip) is installed
+      apt:
+        pkg: p7zip
+        state: installed
+      become: True
+      become_method: sudo
+
+    - name: 7zip Full (p7zip-full) is installed
+      apt:
+        pkg: p7zip-full
+        state: installed
+      become: True
+      become_method: sudo

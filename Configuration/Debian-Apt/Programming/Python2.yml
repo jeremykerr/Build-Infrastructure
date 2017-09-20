@@ -1,0 +1,45 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ---------------------
+    # Python 2 is installed
+    # ---------------------
+    - name: Python 2 is installed
+      apt:
+        pkg: python
+        state: installed
+      become: True
+      become_method: sudo
+
+    # -------------------------
+    # Python 2 dev is installed
+    # -------------------------
+    - name: Python 2 dev is installed
+      apt:
+        pkg: python-dev
+        state: installed
+      become: True
+      become_method: sudo
+
+    # -------------------------
+    # Python 2 pip is installed
+    # -------------------------
+    - name: Python 2 pip is installed
+      apt:
+        pkg: python-pip
+        state: installed
+      become: True
+      become_method: sudo
+
+    # --------------------------------
+    # Python 2 virtualenv is installed
+    # --------------------------------
+    - name: Python 2 virtualenv is installed
+      apt:
+        pkg: virtualenv
+        state: installed
+      become: True
+      become_method: sudo

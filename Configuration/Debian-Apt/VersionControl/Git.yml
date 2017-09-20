@@ -1,0 +1,69 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # -----------------------------------
+    # Ensure Git is present on the system
+    # -----------------------------------
+    - name: Git is installed
+      apt:
+        pkg: git
+        state: installed
+      become: True
+      become_method: sudo
+
+    # ----------------------
+    # Load Git configuration
+    # ----------------------
+    - name: Load Git Configuration Variables
+      set_fact:
+        global_name: "{{ ansible_local.Git.git.global_name }}"
+        global_email: "{{ ansible_local.Git.git.global_email }}"
+
+    # -------------------
+    # Set Global Username
+    # -------------------
+    - name: Check Git global username to see if it needs to be set
+      command: git config --global user.name
+      register: git_global_user
+      ignore_errors: True
+      changed_when: git_global_user.rc != 0 and git_global_user.rc != 1
+      failed_when: git_global_user.rc != 0 and git_global_user.rc != 1
+      become: True
+      become_method: sudo
+
+    - name: If Git global username is missing or incorrect, set it
+      command: "git config --global user.name {{ global_name }}"
+      when: >
+        git_global_user.rc != 0
+        or git_global_user.stdout != global_name
+      register: global_user_success
+      failed_when: global_user_success.rc != 0
+      become: True
+      become_method: sudo
+
+    # ----------------
+    # Set Global Email
+    # ----------------
+    - name: Check Git global email to see if it needs to be set
+      command: git config --global user.email
+      register: git_global_email
+      ignore_errors: True
+      changed_when: git_global_email.rc != 0 and git_global_email.rc != 1
+      failed_when: git_global_email.rc != 0 and git_global_email.rc != 1
+      become: True
+      become_method: sudo
+
+    - name: If Git global email is missing or incorrect, set it
+      command: "git config --global user.email {{ global_email }}"
+      when: >
+        git_global_email.rc != 0
+        or git_global_email.stdout != global_email
+      register: global_email_success
+      failed_when: global_email_success.rc != 0
+      become: True
+      become_method: sudo
+
+

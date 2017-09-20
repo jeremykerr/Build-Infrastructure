@@ -1,0 +1,10 @@
+
+# ---------------------------------------------------------------------------
+# Because PDF files are binary, there's no practical way to detect changes
+# between versions. Therefore, it's best to flag them as binary, so that
+# different versions can be committed without becoming corrupted and creating
+# merge conflicts.
+# ---------------------------------------------------------------------------
+*.pdf
+
+

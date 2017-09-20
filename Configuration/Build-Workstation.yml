@@ -1,0 +1,60 @@
+
+# ---------------------
+# Install a web browser
+# ---------------------
+- include: Chrome-Apt/Browser/GoogleChrome.yml
+
+# -----------------------------
+# Install a compression utility
+# -----------------------------
+- include: Debian-Apt/Compression/7zip.yml
+
+# -------------------------
+# Install a database client
+# -------------------------
+- include: Debian-Apt/DatabaseTools/PostgreSQLClient.yml
+
+# ----------------------------------
+# Install document editing utilities
+# ----------------------------------
+- include: Debian-Apt/DocumentEditing/Rst.yml
+- include: Debian-Apt/DocumentEditing/Texmaker.yml
+
+# ---------------------
+# Install network tools
+# ---------------------
+- include: Debian-Apt/NetworkTools/ArpScan.yml
+- include: Debian-Apt/NetworkTools/NMap.yml
+
+# ------------------------------------------
+# Install programming environments and tools
+# ------------------------------------------
+- include: Debian-Apt/Programming/Python2.yml
+- include: Debian-Apt/Programming/Python3.yml
+
+# ----------------------------------------------------------------
+# Install torrent clients
+#   -> Note: Transmission is included in Debian systems by default
+# ----------------------------------------------------------------
+#- include: Debian-Apt/Torrent/Bittorrent.yml
+#- include: Debian-Apt/Torrent/UninstallBittorrent.yml
+
+# ------------------------------
+# Install version control client
+# ------------------------------
+- include: Debian-Apt/VersionControl/Git.yml
+
+# ---------------------------
+# Install virtualization tool
+# ---------------------------
+- include: Docker-Apt/Virtualization/Docker.yml
+
+# -------------------
+# Install text editor
+# -------------------
+- include: Sublime-Apt/TextEditing/Sublime.yml
+
+# -------------------------------
+# Apply preferred system settings
+# -------------------------------
+- include: System/Network/Grub.yml

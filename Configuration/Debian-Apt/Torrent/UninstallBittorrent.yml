@@ -1,0 +1,23 @@
+
+- hosts: workstation
+
+  tasks:
+
+    # ----------------------------------------------
+    # Ensure Bittorrent is not present on the system
+    # ----------------------------------------------
+    - name: Bittorrent is absent
+      apt: 
+        pkg: bittorrent
+        state: absent
+        purge: yes
+      become: True
+      become_method: sudo
+
+    - name: Bittorrent GUI is absent
+      apt:
+        pkg: bittorrent-gui
+        state: absent
+      become: True
+      become_method: sudo
+

@@ -1,0 +1,25 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # -------------------------------------------
+    # Set GRUB to apply predictable network names
+    # -------------------------------------------
+    - name: Ensure Grub names network connections predictably
+      replace:
+        path: /etc/default/grub
+        regexp: 'GRUB_CMDLINE_LINUX=""'
+        replace: 'GRUB_CMDLINE_LINUX="net.ifnames=0 biosdevname=0"'
+        backup: yes
+      register: grub_updated
+      become: True
+      become_method: sudo
+
+    - name: Update Grub if network naming convention was changed
+      command: update-grub
+      when: grub_updated.changed
+      become: True
+      become_method: sudo
+

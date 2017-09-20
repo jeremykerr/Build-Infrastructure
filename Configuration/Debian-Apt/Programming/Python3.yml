@@ -1,0 +1,45 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ---------------------------
+    # Install Python 3 and verify
+    # ---------------------------
+    - name: Python 3 is installed
+      apt:
+        pkg: python3
+        state: installed
+      become: True
+      become_method: sudo
+
+    # -------------------------------
+    # Install Python 3 dev and verify
+    # -------------------------------
+    - name: Python 3 dev is installed
+      apt:
+        pkg: python3-dev
+        state: installed
+      become: True
+      become_method: sudo
+
+    # -------------------------------
+    # Install Python 3 pip and verify
+    # -------------------------------
+    - name: Python 3 pip is installed
+      apt:
+        pkg: python3-pip
+        state: installed
+      become: True
+      become_method: sudo
+
+    # --------------------------------------
+    # Install Python 3 virtualenv and verify
+    # --------------------------------------
+    - name: Python 3 virtualenv is installed
+      apt:
+        pkg: python3-virtualenv
+        state: installed
+      become: True
+      become_method: sudo

@@ -1,0 +1,15 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ------------------------------
+    # PostgreSQL Client is installed
+    # ------------------------------
+    - name: PostgreSQL Client is installed
+      apt:
+        pkg: postgresql-client
+        state: installed
+      become: True
+      become_method: sudo

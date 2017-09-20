@@ -1,0 +1,56 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ---------------------
+    # Texmaker is installed
+    # ---------------------
+    - name: Texmaker is installed
+      apt:
+        pkg: texmaker
+        state: installed
+      become: True
+      become_method: sudo
+
+    # --------------------
+    # Texlive is installed
+    # --------------------
+    - name: Texlive is installed
+      apt:
+        pkg: texlive
+        state: installed
+      become: True
+      become_method: sudo
+
+    # ------------------------------
+    # Texlive Pictures are installed
+    # ------------------------------
+    - name: Texlive Pictures are installed
+      apt:
+        pkg: texlive-pictures
+        state: installed
+      become: True
+      become_method: sudo
+
+    # --------------------------------
+    # Texlive Latex Extra is installed
+    # --------------------------------
+    - name: Texlive Latex Extra is installed
+      apt:
+        pkg: texlive-latex-extra
+        state: installed
+      become: True
+      become_method: sudo
+
+    # ----------------------------
+    # Texlive Science is installed
+    # ----------------------------
+    - name: Texlive Science is installed
+      apt:
+        pkg: texlive-science
+        state: installed
+      become: True
+      become_method: sudo
+

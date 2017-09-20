@@ -1,0 +1,15 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # -----------------
+    # NMap is installed
+    # -----------------
+    - name: NMap is installed
+      apt:
+        pkg: nmap
+        state: installed
+      become: True
+      become_method: sudo

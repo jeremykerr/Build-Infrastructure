@@ -1,0 +1,77 @@
+
+
+- hosts: workstation
+
+  # ---------------------------------------------------
+  # Docker Apt File must exist on the system to use Apt
+  # ---------------------------------------------------
+  vars:
+    - docker_apt_file: /etc/apt/sources.list.d/docker.list
+
+  tasks:
+
+    # -----------------------------------------------------
+    # Ensure Docker Apt repository is present on the system
+    # -----------------------------------------------------
+    - name: Docker Apt repository is present
+      apt_key:
+        url: "https://download.docker.com/linux/ubuntu/gpg"
+        state: present
+
+    # ----------------------------------------------------
+    # Ensure Docker Apt repository is properly configured
+    #   -> Check to see whether Apt repository exists
+    #   -> Suppress error output for expected status codes
+    # ----------------------------------------------------
+    - name: Ensure Docker Apt repository is properly configured
+      command: "test -e {{ docker_apt_file }}"
+      register: docker_apt_exists
+      ignore_errors: True
+      changed_when: docker_apt_exists.rc != 0 and docker_apt_exists.rc != 1
+      failed_when: docker_apt_exists.rc != 0 and docker_apt_exists.rc != 1
+      become: True
+      become_user: nobody
+
+    - name: Add Docker Apt repository if it does not exist
+      copy:
+        content: "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable"
+        dest: "{{ docker_apt_file }}"
+        owner: root
+        group: root
+        mode: 644
+      when: docker_apt_exists.rc != 0
+      become: True
+      become_method: sudo
+
+    - name: Update Apt Cache if Docker repository was added
+      apt:
+        update_cache: yes
+      when: docker_apt_exists.rc != 0
+      become: True
+      become_method: sudo
+
+    # --------------------------------------------------------
+    # Ensure Docker Community Edition is present on the system
+    # --------------------------------------------------------
+    - name: Docker Community Edition is installed
+      apt:
+        pkg: docker-ce
+        state: installed
+      become: True
+      become_method: sudo
+
+    # ----------------------------------------------------
+    # Test that Docker Community Edition works as expected
+    # ----------------------------------------------------
+    - name: Test that Docker Community Edition works correctly
+      command: "docker run hello-world"
+      register: docker_works_correctly
+      become: True
+      become_method: sudo
+
+    - name: Fail if Docker Community Edition did not work correctly
+      fail:
+        msg: "Docker Community Edition failed to run as expected"
+      when: docker_works_correctly.rc != 0
+
+

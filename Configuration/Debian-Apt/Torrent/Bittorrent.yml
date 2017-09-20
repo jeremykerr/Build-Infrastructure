@@ -1,0 +1,22 @@
+
+- hosts: workstation
+
+  tasks:
+
+    # ------------------------------------------
+    # Ensure Bittorrent is present on the system
+    # ------------------------------------------
+    - name: Bittorrent is installed
+      apt: 
+        pkg: bittorrent
+        state: installed
+      become: True
+      become_method: sudo
+
+    - name: Bittorrent GUI is installed
+      apt:
+        pkg: bittorrent-gui
+        state: installed
+      become: True
+      become_method: sudo
+
