@@ -1,0 +1,23 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    - name: Set User
+      set_fact:
+        user: "{{ ansible_local.User.user.name }}"
+
+    # -------
+    # Set GPG
+    # -------
+    - name: Initialize Gnu Privacy Guard configuration
+      command: gpg --list-keys
+      become: True
+      become_user: "{{ user }}"
+
+    - name: Import GPG key used for the Xen Hypervisor project
+      command: gpg --import ../../../Hosts/workstation/xen-hypervisor-public-gpg.key
+      become: True
+      become_user: "{{ user }}"
+
