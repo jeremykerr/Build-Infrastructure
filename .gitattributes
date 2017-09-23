@@ -5,6 +5,6 @@
 # different versions can be committed without becoming corrupted and creating
 # merge conflicts.
 # ---------------------------------------------------------------------------
-*.pdf
+*.pdf binary
 
 
