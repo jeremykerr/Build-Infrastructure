@@ -60,6 +60,37 @@
       become: True
       become_method: sudo
 
+    # --------------------------
+    # Apply Docker settings file
+    # --------------------------
+    - name: Apply Docker Settings
+      copy:
+        src: ../../../Hosts/workstation/etc/docker/daemon.json
+        dest: /etc/docker/daemon.json
+      register: docker_opts_line_added
+      become: True
+      become_method: sudo
+
+    # --------------------------------
+    # Restart Docker to apply settings
+    # --------------------------------
+    - name: Reload Docker Daemon, if setting was not present
+      systemd:
+        name: docker.service
+        daemon_reload: yes
+        state: restarted
+      #when: docker_opts_line_added.changed
+      become: True
+      become_method: sudo
+
+    - name: Restart Docker, if setting was not present
+      service:
+        name: docker
+        state: restarted
+      #when: docker_opts_line_added.changed
+      become: True
+      become_method: sudo
+
     # ----------------------------------------------------
     # Test that Docker Community Edition works as expected
     # ----------------------------------------------------
@@ -73,5 +104,3 @@
       fail:
         msg: "Docker Community Edition failed to run as expected"
       when: docker_works_correctly.rc != 0
-
-
