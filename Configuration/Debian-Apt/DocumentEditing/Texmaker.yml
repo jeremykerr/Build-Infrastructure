@@ -63,3 +63,23 @@
         state: installed
       become: True
       become_method: sudo
+
+    # ---------------------------------
+    # Install texlive recommended fonts
+    # ---------------------------------
+    - name: Texlive Recommended Fonts are installed
+      apt:
+        pkg: texlive-fonts-recommended
+        state: installed
+      become: True
+      become_method: sudo
+
+    # ---------------------------
+    # Install texlive extra fonts
+    # ---------------------------
+    - name: Texlive Extra Fonts are installed
+      apt:
+        pkg: texlive-fonts-extra
+        state: installed
+      become: True
+      become_method: sudo
