@@ -54,3 +54,12 @@
       become: True
       become_method: sudo
 
+    # ----------------------------------
+    # LModern (font sizing) is installed
+    # ----------------------------------
+    - name: LModern is installed
+      apt:
+        pkg: lmodern
+        state: installed
+      become: True
+      become_method: sudo
