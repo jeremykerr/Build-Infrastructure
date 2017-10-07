@@ -1,0 +1,15 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # -------------------------------------
+    # Ensure Pinta is present on the system
+    # -------------------------------------
+    - name: Pinta is installed
+      apt: 
+        pkg: pinta
+        state: installed
+      become: True
+      become_method: sudo
