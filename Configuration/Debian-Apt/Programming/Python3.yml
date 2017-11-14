@@ -10,7 +10,7 @@
     - name: Python 3 is installed
       apt:
         pkg: python3
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -20,7 +20,7 @@
     - name: Python 3 dev is installed
       apt:
         pkg: python3-dev
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -30,7 +30,7 @@
     - name: Python 3 pip is installed
       apt:
         pkg: python3-pip
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -40,6 +40,6 @@
     - name: Python 3 virtualenv is installed
       apt:
         pkg: python3-virtualenv
-        state: installed
+        state: latest
       become: True
       become_method: sudo

@@ -10,6 +10,6 @@
     - name: PostgreSQL Client is installed
       apt:
         pkg: postgresql-client
-        state: installed
+        state: latest
       become: True
       become_method: sudo

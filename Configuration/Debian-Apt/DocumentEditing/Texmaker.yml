@@ -10,7 +10,7 @@
     - name: Texmaker is installed
       apt:
         pkg: texmaker
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -20,7 +20,7 @@
     - name: Texlive is installed
       apt:
         pkg: texlive
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -30,7 +30,7 @@
     - name: Texlive Pictures are installed
       apt:
         pkg: texlive-pictures
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -40,7 +40,7 @@
     - name: Texlive Latex Extra is installed
       apt:
         pkg: texlive-latex-extra
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -50,7 +50,7 @@
     - name: Texlive Science is installed
       apt:
         pkg: texlive-science
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -60,7 +60,7 @@
     - name: LModern is installed
       apt:
         pkg: lmodern
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -70,7 +70,7 @@
     - name: Texlive Recommended Fonts are installed
       apt:
         pkg: texlive-fonts-recommended
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -80,6 +80,6 @@
     - name: Texlive Extra Fonts are installed
       apt:
         pkg: texlive-fonts-extra
-        state: installed
+        state: latest
       become: True
       become_method: sudo

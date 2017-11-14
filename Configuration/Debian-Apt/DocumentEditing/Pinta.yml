@@ -10,6 +10,6 @@
     - name: Pinta is installed
       apt: 
         pkg: pinta
-        state: installed
+        state: latest
       become: True
       become_method: sudo

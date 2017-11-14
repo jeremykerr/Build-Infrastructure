@@ -10,7 +10,7 @@
     - name: Python 2 is installed
       apt:
         pkg: python
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -20,7 +20,7 @@
     - name: Python 2 dev is installed
       apt:
         pkg: python-dev
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -30,7 +30,7 @@
     - name: Python 2 pip is installed
       apt:
         pkg: python-pip
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 
@@ -40,6 +40,6 @@
     - name: Python 2 virtualenv is installed
       apt:
         pkg: virtualenv
-        state: installed
+        state: latest
       become: True
       become_method: sudo

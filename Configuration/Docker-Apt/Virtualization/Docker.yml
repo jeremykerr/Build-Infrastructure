@@ -56,7 +56,7 @@
     - name: Docker Community Edition is installed
       apt:
         pkg: docker-ce
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 

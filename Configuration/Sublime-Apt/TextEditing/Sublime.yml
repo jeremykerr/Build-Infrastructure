@@ -55,6 +55,6 @@
     - name: Sublime Text is installed
       apt: 
         pkg: sublime-text
-        state: installed
+        state: latest
       become: True
       become_method: sudo

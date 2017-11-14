@@ -10,7 +10,7 @@
     - name: Arp-Scan is installed
       apt:
         pkg: arp-scan
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 

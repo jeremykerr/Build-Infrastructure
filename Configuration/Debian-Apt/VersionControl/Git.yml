@@ -10,7 +10,7 @@
     - name: Git is installed
       apt:
         pkg: git
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 

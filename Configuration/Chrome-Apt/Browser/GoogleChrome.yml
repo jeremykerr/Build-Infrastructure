@@ -56,7 +56,7 @@
     - name: Google Chrome is installed
       apt:
         pkg: google-chrome-stable
-        state: installed
+        state: latest
       become: True
       become_method: sudo
 

@@ -1,0 +1,16 @@
+
+
+- hosts: workstation
+
+  tasks:
+
+    # ---------------------------------------
+    # Ensure Vagrant is present on the system
+    # ---------------------------------------
+    - name: Vagrant is installed
+      apt:
+        pkg: vagrant
+        state: latest
+      become: True
+      become_method: sudo
+
