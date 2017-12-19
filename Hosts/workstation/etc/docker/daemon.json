@@ -1,6 +1,0 @@
-{
-    "iptables": false,
-    "ip-forward": false,
-    "ip-masq": false,
-    "ipv6": false
-}
