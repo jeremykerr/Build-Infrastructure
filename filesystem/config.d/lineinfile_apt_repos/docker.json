@@ -1,0 +1,27 @@
+{
+    "lineinfile_params": {
+        "_meta": {
+            "label": "Docker"
+        },
+        "attributes": null,
+        "backrefs": null,
+        "backup": "yes",
+        "create": "yes",
+        "group": "root",
+        "insertafter": null,
+        "insertbefore": null,
+        "line": "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable",
+        "mode": "0644",
+        "others": null,
+        "owner": "root",
+        "path": "/etc/apt/sources.list.d/docker.list",
+        "regexp": null,
+        "selevel": null,
+        "serole": null,
+        "setype": null,
+        "seuser": null,
+        "state": "present",
+        "unsafe_writes": null,
+        "validate": null
+    }
+}

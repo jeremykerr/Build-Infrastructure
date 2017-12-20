@@ -1,0 +1,27 @@
+{
+    "copy_params": {
+        "_meta": {
+            "label": "/home/mobile/.gitconfig"
+        },
+        "attributes": null,
+        "backup": "yes",
+        "content": null,
+        "decrypt": null,
+        "dest": "/home/mobile/.gitconfig",
+        "directory_mode": null,
+        "follow": null,
+        "force": "yes",
+        "group": "root",
+        "local_follow": null,
+        "mode": "0644",
+        "owner": "root",
+        "remote_src": null,
+        "selevel": null,
+        "serole": null,
+        "setype": null,
+        "seuser": null,
+        "src": "/var/opt/workstation/hosts.d/mobile/home/mobile/.gitconfig",
+        "unsafe_writes": null,
+        "validate": null
+    }
+}

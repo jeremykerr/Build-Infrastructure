@@ -1,0 +1,15 @@
+{
+    "apt_key_params": {
+        "_meta": {
+            "label": "Google Chrome"
+        },
+        "data": null,
+        "file": null,
+        "id": null,
+        "keyring": null,
+        "keyserver": null,
+        "state": "present",
+        "url": "https://dl-ssl.google.com/linux/linux_signing_key.pub",
+        "validate_certs": "yes"
+    }
+}

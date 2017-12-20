@@ -1,0 +1,23 @@
+{
+    "apt_params": {
+        "_meta": {
+            "label": "bittorrent"
+        },
+        "allow_unauthenticated": "no",
+        "autoclean": null,
+        "autoremove": null,
+        "cache_valid_time": null,
+        "deb": null,
+        "default_release": null,
+        "dpkg_options": null,
+        "force": null,
+        "force_apt_get": null,
+        "install_recommends": null,
+        "name": "bittorrent-gui",
+        "only_upgrade": null,
+        "purge": null,
+        "state": "latest",
+        "update_cache": null,
+        "upgrade": null
+    }
+}

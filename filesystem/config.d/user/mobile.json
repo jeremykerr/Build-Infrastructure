@@ -1,0 +1,44 @@
+{
+    "user_params": {
+        "_meta": {
+            "label": "mobile"
+        },
+        "append": "yes",
+        "comment": "mobile",
+        "createhome": "yes",
+        "expires": null,
+        "force": null,
+        "generate_ssh_key": null,
+        "group": "mobile",
+        "groups_arg": [
+            "mobile",
+            "adm",
+            "cdrom",
+            "sudo",
+            "dip",
+            "plugdev",
+            "lpadmin",
+            "sambashare"
+        ],
+        "home": "/home/mobile",
+        "local": null,
+        "login_class": null,
+        "move_home": null,
+        "name": "mobile",
+        "non_unique": null,
+        "password": null,
+        "remove": null,
+        "seuser": null,
+        "shell": "/bin/bash",
+        "skeleton": null,
+        "ssh_key_bits": null,
+        "ssh_key_comment": null,
+        "ssh_key_file": null,
+        "ssh_key_passphrase": null,
+        "ssh_key_type": null,
+        "state": "present",
+        "system": null,
+        "uid": null,
+        "update_password": null
+    }
+}

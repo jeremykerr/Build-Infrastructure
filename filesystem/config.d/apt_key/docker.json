@@ -1,0 +1,15 @@
+{
+    "apt_key_params": {
+        "_meta": {
+            "label": "Docker"
+        },
+        "data": null,
+        "file": null,
+        "id": null,
+        "keyring": null,
+        "keyserver": null,
+        "state": "present",
+        "url": "https://download.docker.com/linux/ubuntu/gpg",
+        "validate_certs": "yes"
+    }
+}
