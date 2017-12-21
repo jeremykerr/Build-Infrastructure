@@ -1,0 +1,54 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load apt metadata"
+      set_fact:
+        label: "{{ apt_params._meta.label }}"
+
+    - name: "load {{ label }} parameters"
+      set_fact:
+        allow_unauthenticated: "{{ apt_params.allow_unauthenticated }}"
+        #autoclean: "{{ apt_params.autoclean }}"
+        #autoremove: "{{ apt_params.autoremove }}"
+        #cache_valid_time: "{{ apt_params.cache_valid_time }}"
+        #deb: "{{ apt_params.deb }}"
+        #default_release: "{{ apt_params.default_release }}"
+        #dpkg_options: "{{ apt_params.dpkg_options }}"
+        #force: "{{ apt_params.force }}"
+        #force_apt_get: "{{ apt_params.force_apt_get }}"
+        #install_recommends: "{{ apt_params.install_recommends }}"
+        name: "{{ apt_params.name }}"
+        #only_upgrade: "{{ apt_params.only_upgrade }}"
+        #purge: "{{ apt_params.purge }}"
+        state: "{{ apt_params.state }}"
+        #update_cache: "{{ apt_params.update_cache }}"
+        #upgrade: "{{ apt_params.upgrade }}"
+
+
+    # -----------
+    # Run command
+    # -----------
+    - name: "ensure {{ label }} is at state {{ state }}"
+      apt:
+        allow_unauthenticated: "{{ allow_unauthenticated }}"
+        #autoclean: "{{ autoclean }}"
+        #autoremove: "{{ autoremove }}"
+        #cache_valid_time: "{{ cache_valid_time }}"
+        #deb: "{{ deb }}"
+        #default_release: "{{ default_release }}"
+        #dpkg_options: "{{ dpkg_options }}"
+        #force: "{{ force }}"
+        #force_apt_get: "{{ force_apt_get }}"
+        #install_recommends: "{{ install_recommends }}"
+        name: "{{ name }}"
+        #only_upgrade: "{{ only_upgrade }}"
+        #purge: "{{ purge }}"
+        state: "{{ state }}"
+        #update_cache: "{{ update_cache }}"
+        #upgrade: "{{ upgrade }}"
+      become: True
+      become_method: sudo

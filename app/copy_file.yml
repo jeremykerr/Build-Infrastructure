@@ -1,0 +1,56 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load copy metadata"
+      set_fact:
+        label: "{{ copy_params._meta.label }}"
+
+    - name: "load {{ label }} copy arguments"
+      set_fact:
+        #attributes: "{{ copy_params.attributes }}"
+        backup: "{{ copy_params.backup }}"
+        #content: "{{ copy_params.content }}"
+        #decrypt: "{{ copy_params.decrypt }}"
+        dest: "{{ copy_params.dest }}"
+        #directory_mode: "{{ copy_params.directory_mode }}"
+        #follow: "{{ copy_params.follow }}"
+        force: "{{ copy_params.force }}"
+        group: "{{ copy_params.group }}"
+        #local_follow: "{{ copy_params.local_follow }}"
+        mode: "{{ copy_params.mode }}"
+        owner: "{{ copy_params.owner }}"
+        #remote_src: "{{ copy_params.remote_src }}"
+        #selevel: "{{ copy_params.selevel }}"
+        #serole: "{{ copy_params.serole }}"
+        #setype: "{{ copy_params.setype }}"
+        #seuser: "{{ copy_params.seuser }}"
+        src: "{{ copy_params.src }}"
+        #unsafe_writes: "{{ copy_params.unsafe_writes }}"
+        #validate: "{{ copy_params.validate }}"
+
+    - name: "apply {{ label }} copy parameters"
+      copy:
+        #attributes: "{{ attributes }}"
+        backup: "{{ backup }}"
+        #content: "{{ content }}"
+        #decrypt: "{{ decrypt }}"
+        dest: "{{ dest }}"
+        #directory_mode: "{{ directory_mode }}"
+        #follow: "{{ follow }}"
+        force: "{{ force }}"
+        group: "{{ group }}"
+        #local_follow: "{{ local_follow }}"
+        mode: "{{ mode }}"
+        owner: "{{ owner }}"
+        #remote_src: "{{ remote_src }}"
+        #selevel: "{{ selevel }}"
+        #serole: "{{ serole }}"
+        #setype: "{{ setype }}"
+        #seuser: "{{ seuser }}"
+        src: "{{ src }}"
+        #unsafe_writes: "{{ unsafe_writes }}"
+        #validate: "{{ validate }}"

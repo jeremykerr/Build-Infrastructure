@@ -1,0 +1,62 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load lineinfile metadata"
+      set_fact:
+        label: "{{ lineinfile_params._meta.label }}"
+
+    - name: "load {{ label }} parameters"
+      set_fact:
+        #attributes: "{{ lineinfile_params.attributes }}"
+        #backrefs: "{{ lineinfile_params.backrefs }}"
+        backup: "{{ lineinfile_params.backup }}"
+        create: "{{ lineinfile_params.create }}"
+        group: "{{ lineinfile_params.group }}"
+        #insertafter: "{{ lineinfile_params.insertafter }}"
+        #insertbefore: "{{ lineinfile_params.insertbefore }}"
+        line: "{{ lineinfile_params.line }}"
+        mode: "{{ lineinfile_params.mode }}"
+        #others: "{{ lineinfile_params.others }}"
+        owner: "{{ lineinfile_params.owner }}"
+        path: "{{ lineinfile_params.path }}"
+        #regexp: "{{ lineinfile_params.regexp }}"
+        #selevel: "{{ lineinfile_params.selevel }}"
+        #serole: "{{ lineinfile_params.serole }}"
+        #setype: "{{ lineinfile_params.setype }}"
+        #seuser: "{{ lineinfile_params.seuser }}"
+        state: "{{ lineinfile_params.state }}"
+        #unsafe_writes: "{{ lineinfile_params.unsafe_writes }}"
+        #validate: "{{ lineinfile_params.validate }}"
+
+    # -----------
+    # Run command
+    # -----------
+    - name: "ensure {{ label }} apt repo is {{ state }} in {{ path }}"
+      lineinfile:
+        #attributes: "{{ attributes }}"
+        #backrefs: "{{ backrefs }}"
+        backup: "{{ backup }}"
+        create: "{{ create }}"
+        group: "{{ group }}"
+        #insertafter: "{{ insertafter }}"
+        #insertbefore: "{{ insertbefore }}"
+        line: "{{ line }}"
+        mode: "{{ mode }}"
+        #others: "{{ others }}"
+        owner: "{{ owner }}"
+        path: "{{ path }}"
+        #regexp: "{{ regexp }}"
+        #selevel: "{{ selevel }}"
+        #serole: "{{ serole }}"
+        #setype: "{{ setype }}"
+        #seuser: "{{ seuser }}"
+        state: "{{ state }}"
+        #unsafe_writes: "{{ unsafe_writes }}"
+        #validate: "{{ validate }}"
+      become: True
+      become_method: sudo
+

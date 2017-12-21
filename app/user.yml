@@ -1,0 +1,78 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load user metadata"
+      set_fact:
+        label: "{{ user_params._meta.label }}"
+
+    - name: "load {{ label }} parameters"
+      set_fact:
+        append: "{{ user_params.append }}"
+        comment: "{{ user_params.comment }}"
+        createhome: "{{ user_params.createhome }}"
+        #expires: "{{ user_params.expires }}"
+        #force: "{{ user_params.force }}"
+        #generate_ssh_key: "{{ user_params.generate_ssh_key }}"
+        group: "{{ user_params.group }}"
+        groups_arg: "{{ user_params.groups_arg }}"
+        home: "{{ user_params.home }}"
+        #local: "{{ user_params.local }}"
+        #login_class: "{{ user_params.login_class }}"
+        #move_home: "{{ user_params.move_home }}"
+        name: "{{ user_params.name }}"
+        #non_unique: "{{ user_params.non_unique }}"
+        #password: "{{ user_params.password }}"
+        #remove: "{{ user_params.remove }}"
+        #seuser: "{{ user_params.seuser }}"
+        shell: "{{ user_params.shell }}"
+        #skeleton: "{{ user_params.skeleton }}"
+        #ssh_key_bits: "{{ user_params.ssh_key_bits }}"
+        #ssh_key_comment: "{{ user_params.ssh_key_comment }}"
+        #ssh_key_file: "{{ user_params.ssh_key_file }}"
+        #ssh_key_passphrase: "{{ user_params.ssh_key_passphrase }}"
+        #ssh_key_type: "{{ user_params.ssh_key_type }}"
+        state: "{{ user_params.state }}"
+        #system: "{{ user_params.system }}"
+        #uid: "{{ user_params.uid }}"
+        #update_password: "{{ user_params.update_password }}"
+
+    # -----------
+    # Run command
+    # -----------
+    - name: "ensure {{ label }} user is {{ state }} on the system"
+      user:
+        append: "{{ append }}"
+        comment: "{{ comment }}"
+        createhome: "{{ createhome }}"
+        #expires: "{{ expires }}"
+        #force: "{{ force }}"
+        #generate_ssh_key: "{{ generate_ssh_key }}"
+        group: "{{ group }}"
+        groups: "{{ groups_arg }}"
+        home: "{{ home }}"
+        #local: "{{ local }}"
+        #login_class: "{{ login_class }}"
+        #move_home: "{{ move_home }}"
+        name: "{{ name }}"
+        #non_unique: "{{ non_unique }}"
+        #password: "{{ password }}"
+        #remove: "{{ remove }}"
+        #seuser: "{{ seuser }}"
+        shell: "{{ shell }}"
+        #skeleton: "{{ skeleton }}"
+        #ssh_key_bits: "{{ ssh_key_bits }}"
+        #ssh_key_comment: "{{ ssh_key_comment }}"
+        #ssh_key_file: "{{ ssh_key_file }}"
+        #ssh_key_passphrase: "{{ ssh_key_passphrase }}"
+        #ssh_key_type: "{{ ssh_key_type }}"
+        state: "{{ state }}"
+        #system: "{{ system }}"
+        #uid: "{{ uid }}"
+        #update_password: "{{ update_password }}"
+      become: True
+      become_method: sudo
+
