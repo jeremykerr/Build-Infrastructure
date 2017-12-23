@@ -8,15 +8,30 @@ source "0-utils.sh" --no-execute;
 
 
 function install_apt_packages {
-    # ----------------------------------------------
+    # -------------------------------------------
     # Build all workstation dependency components
     # Return an error code if any operation fails
-    # ----------------------------------------------
+    # -------------------------------------------
     echo "installing apt repositories";
     run_command_inventory \
         ./app/apt.yml \
         ./inventory/local \
         /var/opt/workstation/config.d/apt;
+    if [ $? != 0 ]; then return 1; fi
+
+    return 0;
+}
+
+function apply_system_settings {
+    # ----------------------------------------------
+    # Create any necessary system settings and files
+    # Return an error code if any operation fails
+    # ----------------------------------------------
+    echo "installing apt repositories";
+    run_command_inventory \
+        ./app/copy_file.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/copy_file;
     if [ $? != 0 ]; then return 1; fi
 
     return 0;
@@ -28,6 +43,9 @@ function config_all {
     # Return an error if any operation fails
     # -----------------------------------------------
     install_apt_packages;
+    if [ $? != 0 ]; then return 1; fi
+    
+    apply_system_settings;
     if [ $? != 0 ]; then return 1; fi
     
     return 0;
