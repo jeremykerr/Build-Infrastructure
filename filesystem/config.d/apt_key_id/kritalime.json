@@ -1,0 +1,15 @@
+{
+    "apt_key_params": {
+        "_meta": {
+            "label": "kritalime"
+        },
+        "data": null,
+        "file": null,
+        "id": "0x709901D8205BF7EC06062E0F78F9887001CEE17F",
+        "keyring": null,
+        "keyserver": null,
+        "state": "present",
+        "url": null,
+        "validate_certs": "yes"
+    }
+}

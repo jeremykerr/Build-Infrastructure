@@ -1,0 +1,27 @@
+{
+    "lineinfile_params": {
+        "_meta": {
+            "label": "KritaLime Deb"
+        },
+        "attributes": null,
+        "backrefs": null,
+        "backup": "yes",
+        "create": "yes",
+        "group": "root",
+        "insertafter": null,
+        "insertbefore": null,
+        "line": "deb http://ppa.launchpad.net/kritalime/ppa/ubuntu xenial main",
+        "mode": "0644",
+        "others": null,
+        "owner": "root",
+        "path": "/etc/apt/sources.list.d/kritalime-ppa-xenial.list",
+        "regexp": null,
+        "selevel": null,
+        "serole": null,
+        "setype": null,
+        "seuser": null,
+        "state": "present",
+        "unsafe_writes": null,
+        "validate": null
+    }
+}

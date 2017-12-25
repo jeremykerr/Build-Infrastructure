@@ -29,9 +29,15 @@ function config_apt_repos {
     # ----------------------------------------------
     echo "configuring apt dependencies";
     run_command_inventory \
-        ./app/apt_key.yml \
+        ./app/apt_key_url.yml \
         ./inventory/local \
-        /var/opt/workstation/config.d/apt_key;
+        /var/opt/workstation/config.d/apt_key_url;
+    if [ $? != 0 ]; then return 1; fi
+
+    run_command_inventory \
+        ./app/apt_key_id.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/apt_key_id;
     if [ $? != 0 ]; then return 1; fi
 
     run_command_inventory \
