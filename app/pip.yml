@@ -1,0 +1,48 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load pip metadata"
+      set_fact:
+        label: "{{ pip_params._meta.label }}"
+
+    - name: "load {{ label }} parameters"
+      set_fact:
+        #chdir: "{{ pip_params.chdir }}"
+        #editable: "{{ pip_params.editable }}"
+        #executable: "{{ pip_params.executable }}"
+        #extra_args: "{{ pip_params.extra_args }}"
+        name: "{{ pip_params.name }}"
+        #requirements: "{{ pip_params.requirements }}"
+        state: "{{ pip_params.state }}"
+        #umask: "{{ pip_params.umask }}"
+        #version: "{{ pip_params.version }}"
+        #virtualenv: "{{ pip_params.virtualenv }}"
+        #virtualenv_command: "{{ pip_params.virtualenv_command }}"
+        #virtualenv_python: "{{ pip_params.virtualenv_python }}"
+        #virtualenv_site_packages: "{{ pip_params.virtualenv_site_packages }}"
+
+    # -----------
+    # Run command
+    # -----------
+    - name: "ensure {{ label }} pip packages is {{ state }} on the system"
+      pip:
+        #chdir: "{{ chdir }}"
+        #editable: "{{ editable }}"
+        #executable: "{{ executable }}"
+        #extra_args: "{{ extra_args }}"
+        name: "{{ name }}"
+        #requirements: "{{ requirements }}"
+        state: "{{ state }}"
+        #umask: "{{ umask }}"
+        #version: "{{ version }}"
+        #virtualenv: "{{ virtualenv }}"
+        #virtualenv_command: "{{ virtualenv_command }}"
+        #virtualenv_python: "{{ virtualenv_python }}"
+        #virtualenv_site_packages: "{{ virtualenv_site_packages }}"
+      become: True
+      become_method: sudo
+

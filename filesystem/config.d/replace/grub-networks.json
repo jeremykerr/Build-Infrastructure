@@ -1,0 +1,26 @@
+{
+    "replace_params": {
+        "_meta": {
+            "label": "grub networks"
+        },
+        "after": null,
+        "attributes": null,
+        "backup": "yes",
+        "before": null,
+        "encoding": null,
+        "follow": null,
+        "group": null,
+        "mode": null,
+        "others": null,
+        "owner": null,
+        "path": "/etc/default/grub",
+        "regexp": "GRUB_CMDLINE_LINUX=\"\"",
+        "replace": "GRUB_CMDLINE_LINUX=\"net.ifnames=0 biosdevname=0\"",
+        "selevel": null,
+        "serole": null,
+        "setype": null,
+        "seuser": null,
+        "unsafe_writes": null,
+        "validate": null
+    }
+}

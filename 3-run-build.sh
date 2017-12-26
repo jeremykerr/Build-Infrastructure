@@ -7,7 +7,7 @@
 source "0-utils.sh" --no-execute;
 
 
-function install_apt_packages {
+function install_apt_repositories {
     # -------------------------------------------
     # Build all workstation dependency components
     # Return an error code if any operation fails
@@ -22,16 +22,53 @@ function install_apt_packages {
     return 0;
 }
 
-function apply_system_settings {
+function install_pip_packages {
+    # -------------------------------------------
+    # Build all workstation dependency components
+    # Return an error code if any operation fails
+    # -------------------------------------------
+    echo "installing pip packages";
+    run_command_inventory \
+        ./app/pip.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/pip;
+    if [ $? != 0 ]; then return 1; fi
+
+    return 0;
+}
+
+function copy_system_settings {
     # ----------------------------------------------
     # Create any necessary system settings and files
     # Return an error code if any operation fails
     # ----------------------------------------------
-    echo "installing apt repositories";
+    echo "copying system files";
     run_command_inventory \
         ./app/copy_file.yml \
         ./inventory/local \
         /var/opt/workstation/config.d/copy_file;
+    if [ $? != 0 ]; then return 1; fi
+
+    echo "copying system settings";
+    run_command_inventory \
+        ./app/replace.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/replace;
+    if [ $? != 0 ]; then return 1; fi
+
+    return 0;
+}
+
+function run_system_commands {
+    # -------------------------------------------
+    # Build all workstation dependency components
+    # Return an error code if any operation fails
+    # -------------------------------------------
+    echo "running system commands";
+    run_command_inventory \
+        ./app/command.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/command;
     if [ $? != 0 ]; then return 1; fi
 
     return 0;
@@ -42,10 +79,16 @@ function config_all {
     # Run through all required steps, specified above
     # Return an error if any operation fails
     # -----------------------------------------------
-    install_apt_packages;
+    install_apt_repositories;
     if [ $? != 0 ]; then return 1; fi
     
-    apply_system_settings;
+    install_pip_packages;
+    if [ $? != 0 ]; then return 1; fi
+    
+    copy_system_settings;
+    if [ $? != 0 ]; then return 1; fi
+    
+    run_system_commands;
     if [ $? != 0 ]; then return 1; fi
     
     return 0;

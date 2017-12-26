@@ -1,0 +1,27 @@
+{
+    "copy_params": {
+        "_meta": {
+            "label": "/etc/docker/daemon.json"
+        },
+        "attributes": null,
+        "backup": "yes",
+        "content": null,
+        "decrypt": null,
+        "dest": "/etc/docker/daemon.json",
+        "directory_mode": null,
+        "follow": null,
+        "force": "yes",
+        "group": "root",
+        "local_follow": null,
+        "mode": "0644",
+        "owner": "root",
+        "remote_src": null,
+        "selevel": null,
+        "serole": null,
+        "setype": null,
+        "seuser": null,
+        "src": "/var/opt/workstation/hosts.d/mobile/etc/docker/daemon.json",
+        "unsafe_writes": null,
+        "validate": null
+    }
+}

@@ -1,0 +1,32 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load command metadata"
+      set_fact:
+        label: "{{ command_params._meta.label }}"
+
+    - name: "load {{ label }} free form command"
+      set_fact:
+        free_form: "{{ command_params.free_form }}"
+
+    - name: "load {{ label }} command arguments"
+      set_fact:
+        #chdir: "{{ command_params.args.chdir }}"
+        #creates: "{{ command_params.args.creates }}"
+        #removes: "{{ command_params.args.removes }}"
+        #stdin: "{{ command_params.args.stdin }}"
+        warn: "{{ command_params.args.warn }}"
+
+    - name: "run {{ label }} command"
+      command: "{{ free_form }}"
+      args:
+        #chdir: "{{ chdir }}"
+        #creates: "{{ creates }}"
+        #removes: "{{ removes }}"
+        #stdin: "{{ stdin }}"
+        warn: "{{ warn }}"
+

@@ -1,0 +1,15 @@
+{
+    "command_params": {
+        "_meta": {
+            "label": "update-grub"
+        },
+        "free_form": "update-grub",
+        "args": {
+            "chdir": null,
+            "creates": null,
+            "removes": null,
+            "stdin": null,
+            "warn": "yes"
+        }
+    }
+}

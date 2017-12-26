@@ -1,0 +1,20 @@
+{
+    "pip_params": {
+        "_meta": {
+            "label": "rst2html5"
+        },
+        "chdir": null,
+        "editable": null,
+        "executable": null,
+        "extra_args": null,
+        "name": "rst2html5",
+        "requirements": null,
+        "state": "latest",
+        "umask": null,
+        "version": null,
+        "virtualenv": null,
+        "virtualenv_command": null,
+        "virtualenv_python": null,
+        "virtualenv_site_packages": null
+    }
+}

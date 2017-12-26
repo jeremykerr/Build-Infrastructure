@@ -1,0 +1,60 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load replace metadata"
+      set_fact:
+        label: "{{ replace_params._meta.label }}"
+
+    - name: "load {{ label }} parameters"
+      set_fact:
+        #after: "{{ replace_params.after }}"
+        #attributes: "{{ replace_params.attributes }}"
+        backup: "{{ replace_params.backup }}"
+        #before: "{{ replace_params.before }}"
+        #encoding: "{{ replace_params.encoding }}"
+        #follow: "{{ replace_params.follow }}"
+        #group: "{{ replace_params.group }}"
+        #mode: "{{ replace_params.mode }}"
+        #others: "{{ replace_params.others }}"
+        #owner: "{{ replace_params.owner }}"
+        path: "{{ replace_params.path }}"
+        regexp: "{{ replace_params.regexp }}"
+        replace: "{{ replace_params.replace }}"
+        #selevel: "{{ replace_params.selevel }}"
+        #serole: "{{ replace_params.serole }}"
+        #setype: "{{ replace_params.setype }}"
+        #seuser: "{{ replace_params.seuser }}"
+        #unsafe_writes: "{{ replace_params.unsafe_writes }}"
+        #validate: "{{ replace_params.validate }}"
+
+    # -----------
+    # Run command
+    # -----------
+    - name: "{{ label }} replace {{ regexp }} with {{ replace }} in {{ path }}"
+      replace:
+        #after: "{{ after }}"
+        #attributes: "{{ attributes }}"
+        backup: "{{ backup }}"
+        #before: "{{ before }}"
+        #encoding: "{{ encoding }}"
+        #follow: "{{ follow }}"
+        #group: "{{ group }}"
+        #mode: "{{ mode }}"
+        #others: "{{ others }}"
+        #owner: "{{ owner }}"
+        path: "{{ path }}"
+        regexp: "{{ regexp }}"
+        replace: "{{ replace }}"
+        #selevel: "{{ selevel }}"
+        #serole: "{{ serole }}"
+        #setype: "{{ setype }}"
+        #seuser: "{{ seuser }}"
+        #unsafe_writes: "{{ unsafe_writes }}"
+        #validate: "{{ validate }}"
+      become: True
+      become_method: sudo
+
