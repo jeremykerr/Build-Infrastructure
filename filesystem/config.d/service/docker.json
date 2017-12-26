@@ -1,0 +1,15 @@
+{
+    "service_params": {
+        "_meta": {
+            "label": "restart docker"
+        },
+        "arguments": null,
+        "enabled": null,
+        "name": "docker",
+        "pattern": null,
+        "runlevel": null,
+        "sleep": null,
+        "state": "restarted",
+        "use": null
+    }
+}

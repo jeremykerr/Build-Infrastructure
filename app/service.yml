@@ -1,0 +1,34 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load service metadata"
+      set_fact:
+        label: "{{ service_params._meta.label }}"
+
+    - name: "load {{ label }} service arguments"
+      set_fact:
+        #arguments: "{{ service_params.arguments }}"
+        #enabled: "{{ service_params.enabled }}"
+        name: "{{ service_params.name }}"
+        #pattern: "{{ service_params.pattern }}"
+        #runlevel: "{{ service_params.runlevel }}"
+        #sleep: "{{ service_params.sleep }}"
+        state: "{{ service_params.state }}"
+        #use: "{{ service_params.use }}"
+
+    - name: "apply {{ label }} service parameters"
+      service:
+        #arguments: "{{ arguments }}"
+        #enabled: "{{ enabled }}"
+        name: "{{ name }}"
+        #pattern: "{{ pattern }}"
+        #runlevel: "{{ runlevel }}"
+        #sleep: "{{ sleep }}"
+        state: "{{ state }}"
+        #use: "{{ use }}"
+      become: True
+      become_method: sudo

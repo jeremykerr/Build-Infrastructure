@@ -1,0 +1,32 @@
+
+- hosts: all
+
+  tasks:
+    # -------------------------
+    # Load all config variables
+    # -------------------------
+    - name: "load systemd metadata"
+      set_fact:
+        label: "{{ systemd_params._meta.label }}"
+
+    - name: "load {{ label }} systemd arguments"
+      set_fact:
+        daemon_reload: "{{ systemd_params.daemon_reload }}"
+        #enabled: "{{ systemd_params.enabled }}"
+        #masked: "{{ systemd_params.masked }}"
+        name: "{{ systemd_params.name }}"
+        #no_block: "{{ systemd_params.no_block }}"
+        state: "{{ systemd_params.state }}"
+        #user: "{{ systemd_params.user }}"
+
+    - name: "apply {{ label }} systemd parameters"
+      systemd:
+        daemon_reload: "{{ daemon_reload }}"
+        #enabled: "{{ enabled }}"
+        #masked: "{{ masked }}"
+        name: "{{ name }}"
+        #no_block: "{{ no_block }}"
+        state: "{{ state }}"
+        #user: "{{ user }}"
+      become: True
+      become_method: sudo

@@ -1,0 +1,14 @@
+{
+    "systemd_params": {
+        "_meta": {
+            "label": "restart docker"
+        },
+        "daemon_reload": "yes",
+        "enabled": null,
+        "masked": null,
+        "name": "docker.service",
+        "no_block": null,
+        "state": "restarted",
+        "user": null
+    }
+}

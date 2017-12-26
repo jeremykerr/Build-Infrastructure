@@ -59,7 +59,7 @@ function copy_system_settings {
     return 0;
 }
 
-function run_system_commands {
+function restart_system_components {
     # -------------------------------------------
     # Build all workstation dependency components
     # Return an error code if any operation fails
@@ -69,6 +69,20 @@ function run_system_commands {
         ./app/command.yml \
         ./inventory/local \
         /var/opt/workstation/config.d/command;
+    if [ $? != 0 ]; then return 1; fi
+
+    echo "reloading systemd settings";
+    run_command_inventory \
+        ./app/systemd.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/systemd;
+    if [ $? != 0 ]; then return 1; fi
+
+    echo "restarting services";
+    run_command_inventory \
+        ./app/service.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/service;
     if [ $? != 0 ]; then return 1; fi
 
     return 0;
@@ -88,7 +102,7 @@ function config_all {
     copy_system_settings;
     if [ $? != 0 ]; then return 1; fi
     
-    run_system_commands;
+    restart_system_components;
     if [ $? != 0 ]; then return 1; fi
     
     return 0;
