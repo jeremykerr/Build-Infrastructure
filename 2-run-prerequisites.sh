@@ -19,6 +19,12 @@ function config_users {
         /var/opt/workstation/config.d/user;
     if [ $? != 0 ]; then return 1; fi
 
+    run_command_inventory \
+        ./app/user_append_groups.yml \
+        ./inventory/local \
+        /var/opt/workstation/config.d/user_append_groups;
+    if [ $? != 0 ]; then return 1; fi
+
     return 0;
 }
 

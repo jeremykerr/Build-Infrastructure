@@ -1,0 +1,38 @@
+{
+    "user_params": {
+        "_meta": {
+            "label": "jenkins"
+        },
+        "append": "yes",
+        "comment": "jenkins",
+        "createhome": "no",
+        "expires": null,
+        "force": null,
+        "generate_ssh_key": null,
+        "group": "jenkins",
+        "groups_arg": [
+            "docker",
+            "jenkins"
+        ],
+        "home": null,
+        "local": null,
+        "login_class": null,
+        "move_home": null,
+        "name": "jenkins",
+        "non_unique": null,
+        "password": null,
+        "remove": null,
+        "seuser": null,
+        "shell": "/bin/sh",
+        "skeleton": null,
+        "ssh_key_bits": null,
+        "ssh_key_comment": null,
+        "ssh_key_file": null,
+        "ssh_key_passphrase": null,
+        "ssh_key_type": null,
+        "state": "present",
+        "system": null,
+        "uid": null,
+        "update_password": null
+    }
+}
