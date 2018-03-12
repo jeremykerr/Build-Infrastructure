@@ -1,33 +1,11 @@
 #!/bin/bash
 
 
-function run_command {
-    # --------------------------------------------------------------------------
-    # Run the YAML command with all files in the config directory, one at a time
-    #   => Parameters: YAML_FILE, CONFIG_DIR
-    # Return an error if any operation fails
-    # --------------------------------------------------------------------------
-    local YAML_FILE=$1;
-    local CONFIG_DIR=$2;
-    echo "building all from ${CONFIG_DIR} using ${YAML_FILE}";
-
-    for filename in ${CONFIG_DIR}/*.json; do
-        echo "building ${filename} using ${YAML_FILE}";
-        ansible-playbook ${YAML_FILE} \
-            -e "@${filename}";
-        if [ $? != 0 ]; then return 1; fi
-    done
-    if [ $? != 0 ]; then return 1; fi
-
-    return 0;
-}
-
 function run_command_inventory {
     # ---------------------------------------------------------------------------
     # Run the YAML command with all files in the config directory, one at a time,
-    # using authorization specified in the credentials file. Accept a secondary
-    # file with an inventory parameter containing hosts for the YAML command.
-    #   => Parameters: YAML_FILE, CREDENTIALS, INVENTORY, CONFIG_DIR
+    # against the inventory specified in the inventory file.
+    #   => Parameters: YAML_FILE, INVENTORY, CONFIG_DIR
     # Return an error if any operation fails
     # ---------------------------------------------------------------------------
     local YAML_FILE=$1;
@@ -40,6 +18,39 @@ function run_command_inventory {
         ansible-playbook ${YAML_FILE} \
             -i "${INVENTORY}" \
             -e "@${filename}";
+        if [ $? != 0 ]; then return 1; fi
+    done
+    if [ $? != 0 ]; then return 1; fi
+
+    return 0;
+}
+
+function run_command_inventory_with_dependencies {
+    # ---------------------------------------------------------------------------
+    # Run the YAML command with all files in the config directory, one at a time,
+    # against the inventory specified in the inventory file.
+    #   => Parameters: YAML_FILE, INVENTORY, CONFIG_DIR
+    # Return an error if any operation fails
+    # ---------------------------------------------------------------------------
+    local YAML_FILE=$1;
+    local INVENTORY=$2;
+    local CONFIG_DIR=$3;
+    echo "building all from ${CONFIG_DIR} using ${YAML_FILE} on ${INVENTORY}";
+
+    local DEPENDENCIES="";
+    for filename in ${CONFIG_DIR}/dependencies/*.json; do
+        echo "adding dependency ${filename}";
+        DEPENDENCIES="${DEPENDENCIES} -e @${filename}";
+        if [ $? != 0 ]; then return 1; fi
+    done
+    if [ $? != 0 ]; then return 1; fi
+
+    for filename in ${CONFIG_DIR}/*.json; do
+        echo "building ${filename} with dependencies using ${YAML_FILE}";
+        ansible-playbook ${YAML_FILE} \
+            -i "${INVENTORY}" \
+            -e "@${filename}" \
+            ${DEPENDENCIES};
         if [ $? != 0 ]; then return 1; fi
     done
     if [ $? != 0 ]; then return 1; fi
@@ -65,3 +76,4 @@ if [ "${1}" != "--no-execute" ]; then
     # --------------------------------------------------
     main "${@}";
 fi
+
